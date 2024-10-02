@@ -1,7 +1,7 @@
 FROM public.ecr.aws/docker/library/alpine:3.19.4
 
 # renovate: datasource=github-releases depName=Kozea/Radicale
-ENV VERSION=v3.2.2
+ENV VERSION=v3.2.3
 
 ENV \
   PYTHONDONTWRITEBYTECODE=1 \
