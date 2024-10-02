@@ -1,0 +1,41 @@
+{
+  "enabled": true,
+  "timezone": "Europe/Stockholm",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "🤖 Renovate Dashboard",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "rebaseWhen": "conflicted",
+  "assignees": ["@ahinko"],
+  "semanticCommits": true,
+  "packageRules": [
+    {
+      "datasources": ["docker", "github-releases"],
+      "enabled": true,
+      "updateTypes": ["major", "minor", "patch"]
+    },
+    {
+      "datasources": ["docker","github-releases"],
+      "updateTypes": ["major"],
+      "labels": ["renovate/image-release", "dependency/major"]
+    },
+    {
+      "datasources": ["docker","github-releases"],
+      "updateTypes": ["minor"],
+      "labels": ["renovate/image-release", "dependency/minor", "minor"]
+    },
+    {
+      "datasources": ["docker","github-releases"],
+      "updateTypes": ["patch"],
+      "labels": ["renovate/image-release", "dependency/patch", "patch"]
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.*?=(?<currentValue>.*)\\n"
+      ]
+    }
+  ]
+}
