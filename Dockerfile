@@ -15,7 +15,7 @@ ENV RADICALE_CONFIG_FILE=/config/config
 
 LABEL org.opencontainers.image.source="https://github.com/Kozea/Radicale"
 
-COPY ./config /app/config.default
+COPY ./config.default /app/config.default
 
 #hadolint ignore=DL3018,DL3013
 RUN \
@@ -37,6 +37,9 @@ RUN \
   && adduser -S radicale -G radicale --uid 568 \
   && chown -R 568:568 /app \
   && chmod -R 755 /app \
+  && mkdir -p /config \
+  && chown -R radicale:radicale /config \
+  && chmod -R 775 /config \
   && mkdir -p /data \
   && chown -R radicale:radicale /data \
   && chmod -R 775 /data \
