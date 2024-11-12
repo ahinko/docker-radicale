@@ -106,7 +106,7 @@ jobs:
             type=raw,value=latest
             type=raw,value=${{ steps.semver.outputs.major }}
             type=raw,value=${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}
-            type=raw,value=${{needs.release.outputs.new_version}}
+            type=raw,value=${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}.${{ steps.semver.outputs.patch }}
             type=sha
 
       - name: Build and push
