@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/alpine:3.20.3
+FROM public.ecr.aws/docker/library/alpine:3.21.0
 
 # renovate: datasource=github-releases depName=Kozea/Radicale
 ENV VERSION=v3.3.1
